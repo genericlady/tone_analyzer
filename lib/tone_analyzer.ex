@@ -14,26 +14,30 @@ defmodule ToneAnalyzer do
 end
 
 defmodule ServiceCall do
-  def analyzeText(textInput) do
-    "&text=" <> textInput
-  end
-  
-  def get do
-    HTTPotion.get url, [basic_auth: authOptions]
+  import ToneAnalyzer
+  import String, only: [replace: 3]
+
+  def start(:get, text) do
+    HTTPotion.get url <> "&text=" <> encode(text), [basic_auth: loginCredentials]
   end
 
-  defp post do
+  def start(:post) do
     HTTPotion.post url, [
-      body: "text=" <> URI.encode_www_form("w o r l d !!"),
+      body: "&text=" <> "I like chocolate",
       headers: [
         "User-Agent": "ToneAnalyzer",
         "Content-Type": "application/json"
-      ]
+      ],
+      basic_auth: loginCredentials
     ]
   end
 
-  defp authOptions do
-    {ToneAnalyzer.username, ToneAnalyzer.password}
+  defp encode(text) do
+    replace text, " ", "%20"
+  end
+ 
+  defp loginCredentials do
+    {username, password}
   end
 
 end
