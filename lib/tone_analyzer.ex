@@ -1,5 +1,5 @@
 defmodule ToneAnalyzer do
-  include System, only [get_env: 1]
+  import System, only: [get_env: 1]
 
   def url do
     "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19"
@@ -38,7 +38,7 @@ defmodule ServiceCall do
     replace text, " ", "%20"
   end
  
-  defp loginCredentials do
+  defp login_credentials do
     {username, password}
   end
 
