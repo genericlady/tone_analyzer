@@ -14,7 +14,13 @@ defmodule ToneAnalyzer.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :httpotion]]
+    [
+      applications: [
+        :logger,
+        :httpotion,
+        :table_rex
+      ]
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -29,7 +35,8 @@ defmodule ToneAnalyzer.Mixfile do
   defp deps do
     [
       {:httpotion, "~> 3.0"},
-      {:poison, "> 0.0.0"}
+      {:poison, "~> 3.0"},
+      {:table_rex, "~> 0.8"}
     ]
   end
 end
