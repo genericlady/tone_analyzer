@@ -1,5 +1,5 @@
 defmodule ServiceCall do
-  import ToneAnalyzer
+  import UrlBuilder
   import String, only: [replace: 3]
 
   def start(:get, text) do
@@ -27,7 +27,7 @@ defmodule ServiceCall do
   end
 
   defp analyze_text(:get, text) do
-    HTTPotion.get url <> "&text=" <> encode(text), [basic_auth: login_credentials]
+    HTTPotion.get build_url(text), [basic_auth: login_credentials]
   end
 
   defp analyze_text(:post, text) do
@@ -40,13 +40,13 @@ defmodule ServiceCall do
       basic_auth: login_credentials
     ]
   end
-
-  defp encode(text) do
-    replace text, " ", "%20"
-  end
  
   defp login_credentials do
-    {username, password}
+    {
+      credentials(:username),
+      credentials(:password)
+    }
   end
 
 end
+
