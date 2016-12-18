@@ -1,6 +1,14 @@
 # ToneAnalyzer
+Clone the repo cd into the root of the project directory and run
+it's exectuable with a `--text=` flag.
+```
+$ ./tone_analyzer --text="Some long string of text"
+```
 
-**TODO: Add description**
+To compile into an executable after editing the source code:
+```
+$ mix escript.build
+```
 
 ## Installation
 
