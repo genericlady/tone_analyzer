@@ -51,6 +51,11 @@ $ ./tone_analyzer --text="Some long string of text"
 
 ```
 
+## Technical Overview
+- [Overview of Watson Tone Analyzer Service](https://www.ibm.com/watson/developercloud/doc/tone-analyzer/)
+- [Analyzer Service API Explorer](https://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/)
+- [Understand your score](https://www.ibm.com/watson/developercloud/doc/tone-analyzer/understanding-tone.shtml)
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
