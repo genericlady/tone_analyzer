@@ -3,15 +3,12 @@ defmodule ServiceCall do
   import String, only: [replace: 3]
 
   def start(:get, text) do
-    analyze_text(:get, text)
-      |> to_struct
-      |> document_tone
-      |> tone_categories
+    analyze_text(:get, text) |> to_struct |> document_tone |> tone_categories
   end
 
   def start(:post, text) do
     analyze_text(:post, text)
-      |> to_struct
+    |> to_struct
   end
 
   defp document_tone(response_body) do
@@ -37,10 +34,10 @@ defmodule ServiceCall do
         "User-Agent": "ToneAnalyzer",
         "Content-Type": "application/json"
       ],
-      basic_auth: login_credentials
-    ]
+    basic_auth: login_credentials
+  ]
   end
- 
+
   defp login_credentials do
     {
       credentials(:username),
