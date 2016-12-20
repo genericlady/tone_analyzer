@@ -11,7 +11,7 @@ defmodule ServiceCall do
 
   def start(:post, text) do
     analyze_text(:post, text)
-    |> to_struct
+      |> to_struct
   end
 
   defp document_tone(response_body) do
