@@ -37,8 +37,8 @@ defmodule ServiceCall do
         "User-Agent": "ToneAnalyzer",
         "Content-Type": "application/json"
       ],
-    basic_auth: login_credentials
-  ]
+      basic_auth: login_credentials
+    ]
   end
 
   defp login_credentials do
