@@ -23,21 +23,21 @@ defmodule ToneAnalyzer.CommandLine do
     {options, _, _} = 
       OptionParser.
       parse(
-            args,
-            switches: [text: :string]
-          )
-        options
+        args,
+        switches: [text: :string]
+      )
+      options
   end
 
   def to_tables(categories) do
     map(categories,
-        fn(category) ->
+      fn(category) ->
         title = category["category_name"]
         header = ["Tone Name", "Score"]
         rows = to_rows(category["tones"])
         TableRex.quick_render!(rows, header, title)
-        end
-      )
+      end
+    )
   end
 
   def print_each_table(tables) do
@@ -46,12 +46,12 @@ defmodule ToneAnalyzer.CommandLine do
 
   def to_rows(tones) do
     map(tones,
-        fn(tone) ->
-          [
-            tone["tone_name"],
-            tone["score"]
-          ]
-        end
-      )
+      fn(tone) ->
+        [
+          tone["tone_name"],
+          tone["score"]
+        ]
+      end
+    )
   end
 end

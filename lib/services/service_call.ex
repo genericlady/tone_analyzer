@@ -3,7 +3,10 @@ defmodule ServiceCall do
   import String, only: [replace: 3]
 
   def start(:get, text) do
-    analyze_text(:get, text) |> to_struct |> document_tone |> tone_categories
+    analyze_text(:get, text) 
+      |> to_struct
+      |> document_tone
+      |> tone_categories
   end
 
   def start(:post, text) do
