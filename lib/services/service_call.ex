@@ -3,14 +3,13 @@ defmodule ServiceCall do
 
   def start(:get, text) do
     analyze_text(:get, text) 
-      |> to_struct
-      |> document_tone
-      |> tone_categories
+    |> to_struct
+    |> document_tone
+    |> tone_categories
   end
 
   def start(:post, text) do
-    analyze_text(:post, text)
-      |> to_struct
+    to_struct(analyze_text(:post, text))
   end
 
   defp document_tone(response_body) do
