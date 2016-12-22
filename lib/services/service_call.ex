@@ -1,6 +1,5 @@
 defmodule ServiceCall do
   import UrlBuilder
-  import String, only: [replace: 3]
 
   def start(:get, text) do
     analyze_text(:get, text) 
