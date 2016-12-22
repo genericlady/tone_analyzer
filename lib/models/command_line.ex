@@ -7,6 +7,12 @@ defmodule ToneAnalyzer.CommandLine do
   """
   @vsn "1.0"
 
+  # use stdin or use cat to pipe it in
+  # ./tone_analyzer < filename
+  # turn on executable and read from stdin until
+  # EOF
+  # ctrl-d is EOF in a shell
+
   def main(args) do
     args |> parse_args |> process |> print_each_table
   end
