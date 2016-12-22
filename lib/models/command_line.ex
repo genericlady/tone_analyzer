@@ -1,4 +1,4 @@
-defmodule ToneAnalyzer.CommandLine do
+defmodule CommandLine do
   import Enum, only: [map: 2, each: 2]
 
   @moduledoc """

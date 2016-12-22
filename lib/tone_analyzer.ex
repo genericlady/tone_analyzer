@@ -1,2 +1,0 @@
-defmodule ToneAnalyzer do
-end
