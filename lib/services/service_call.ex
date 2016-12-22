@@ -30,12 +30,16 @@ defmodule ServiceCall do
   end
 
   defp analyze_text(:post, text) do
-    HTTPotion.post url, [
-      body: "&text=#{text}",
-      headers: [
+    header = [
         "User-Agent": "ToneAnalyzer",
         "Content-Type": "application/json"
-      ],
+      ]
+
+    body = "{\"text\": \"#{text}\"}"
+
+    HTTPotion.post url, [
+      body: body,
+      headers: header,
       basic_auth: login_credentials
     ]
   end

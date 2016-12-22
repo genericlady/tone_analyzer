@@ -3,6 +3,7 @@
 You will need ibm bluemix credentials to use the tone analyzing service. [Register Here](https://console.ng.bluemix.net/dashboard/apps/) for a free account.
 
 Register for the tone analyzing service and set your environment variables with the proper credentials.
+
 ```bash
 TONE_ANALYZER_USERNAME=abc
 TONE_ANALYZER_PASS=def
@@ -12,9 +13,12 @@ Clone the repo cd into the root of the project directory to compile into an exec
 ```
 $ mix escript.build
 ```
+
 run it's exectuable with a `--text=` flag.
+
 ```
 $ ./tone_analyzer --text="Some long string of text"
+
 +----------------------+
 |     Emotion Tone     |
 +-----------+----------+
