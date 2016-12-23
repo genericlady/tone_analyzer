@@ -1,4 +1,5 @@
 defmodule ToneAnalyzer.CommandLine do
+  import Foo, only: [is_text: 1, is_file: 1]
   alias ToneAnalyzer.ServiceCall, as: ServiceCall
 
   @moduledoc """
@@ -19,7 +20,7 @@ defmodule ToneAnalyzer.CommandLine do
     ServiceCall.start(:get, options[:text]) |> to_tables
   end
 
-  defp parse_args(args) do
+  defp parse_args(args) when is_text(args) do
     {options, _, _} = 
       OptionParser.
       parse(
@@ -29,7 +30,8 @@ defmodule ToneAnalyzer.CommandLine do
       options
   end
 
-  def to_tables(categories) do
+
+  defp to_tables(categories) do
     Enum.map(categories,
       fn(category) ->
         title = category["category_name"]
@@ -40,11 +42,11 @@ defmodule ToneAnalyzer.CommandLine do
     )
   end
 
-  def print_each_table(tables) do
+  defp print_each_table(tables) do
     Enum.each(tables, &IO.puts(&1))
   end
 
-  def to_rows(tones) do
+  defp to_rows(tones) do
     Enum.map(tones,
       fn(tone) ->
         [
@@ -55,3 +57,4 @@ defmodule ToneAnalyzer.CommandLine do
     )
   end
 end
+
