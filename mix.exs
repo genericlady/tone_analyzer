@@ -8,7 +8,7 @@ defmodule ToneAnalyzer.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     escript: [main_module: CommandLine],
+     escript: [main_module: ToneAnalyzer.CommandLine],
      package: package(),
      deps: deps()
     ]

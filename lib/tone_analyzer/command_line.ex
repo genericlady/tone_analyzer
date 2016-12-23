@@ -1,5 +1,5 @@
-defmodule CommandLine do
-  import Enum, only: [map: 2, each: 2]
+defmodule ToneAnalyzer.CommandLine do
+  alias ToneAnalyzer.ServiceCall, as: ServiceCall
 
   @moduledoc """
   This module defines the main run routine used to
@@ -30,7 +30,7 @@ defmodule CommandLine do
   end
 
   def to_tables(categories) do
-    map(categories,
+    Enum.map(categories,
       fn(category) ->
         title = category["category_name"]
         header = ["Tone Name", "Score"]
@@ -41,11 +41,11 @@ defmodule CommandLine do
   end
 
   def print_each_table(tables) do
-    each(tables, &IO.puts(&1))
+    Enum.each(tables, &IO.puts(&1))
   end
 
   def to_rows(tones) do
-    map(tones,
+    Enum.map(tones,
       fn(tone) ->
         [
           tone["tone_name"],

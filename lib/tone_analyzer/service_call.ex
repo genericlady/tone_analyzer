@@ -1,5 +1,5 @@
-defmodule ServiceCall do
-  import UrlBuilder
+defmodule ToneAnalyzer.ServiceCall do
+  alias ToneAnalyzer.UrlBuilder, as: UrlBuilder
 
   def start(:get, text) do
     analyze_text(:get, text) 
@@ -25,7 +25,7 @@ defmodule ServiceCall do
   end
 
   defp analyze_text(:get, text) do
-    HTTPotion.get build_url(text), [basic_auth: login_credentials]
+    HTTPotion.get UrlBuilder.build(text), [basic_auth: login_credentials]
   end
 
   defp analyze_text(:post, text) do
@@ -36,7 +36,7 @@ defmodule ServiceCall do
 
     body = "{\"text\": \"#{text}\"}"
 
-    HTTPotion.post url, [
+    HTTPotion.post UrlBuilder.url, [
       body: body,
       headers: header,
       basic_auth: login_credentials
@@ -45,8 +45,8 @@ defmodule ServiceCall do
 
   defp login_credentials do
     {
-      credentials(:username),
-      credentials(:password)
+      UrlBuilder.credentials(:username),
+      UrlBuilder.credentials(:password)
     }
   end
 
